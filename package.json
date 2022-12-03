@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "description": "A tool to create the podcast files.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/decouverto/decouverto-podcast-creator.git"
   },
+  "type": "module",
   "keywords": [
     "tool",
     "ffmpeg",
@@ -24,6 +22,8 @@
   },
   "homepage": "https://github.com/decouverto/decouverto-podcast-creator#readme",
   "dependencies": {
-    "ffmpeg-extract-audio": "^1.0.2"
+    "editly": "^0.14.1",
+    "ffmpeg-extract-audio": "^1.0.2",
+    "get-audio-duration": "^3.1.1"
   }
 }

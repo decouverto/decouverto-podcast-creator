@@ -1,11 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 const inputFilesPath = './final_video';
 const inputFiles = fs.readdirSync(inputFilesPath);
 const outputFilesPath = './final_audio';
 const excludedFiles = ['.gitkeep'];
-const extractAudio = require('ffmpeg-extract-audio');
- 
+import extractAudio from 'ffmpeg-extract-audio';
 
 inputFiles.forEach(value => {
     if (!excludedFiles.includes(value)) {
