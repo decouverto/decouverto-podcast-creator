@@ -33,7 +33,7 @@ inputFiles.forEach(value => {
                         ],
                         enableFfmpegLog: false,
                         verbose: false,
-                        fast: true,
+                        fast: false,
                         clipsAudioVolume: 1,
                         outputVolume: 1,
                         keepSourceAudio: true
