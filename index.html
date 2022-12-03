@@ -28,8 +28,6 @@
             <input type="text" id="description" name="description" value="L'Association Pays de Dabo Animation nous parle du 20ème marché de Noël de Dabo.">
             <label for="textarea">Texte:</label>
             <textarea id="textarea" name="textarea" rows="6" cols="50">
-### Mémoire De Territoire Marché de Noël de Dabo 2022 #1
-
 Le Samedi 26 et Dimanche 27 l'Association Pays de Dabo Animation organise le 20ème marché de Noël Montagnard de Dabo en intérieur et extérieur avec de nombreuses possibilités de restaurations.
 Plus d'info sur: [http://www.anim-dabo.fr/](http://www.anim-dabo.fr/)
             </textarea>
@@ -76,6 +74,8 @@ keywords: "${keywords}"
 block: "no" 
 voices: "${voices}"
 ---
+### ${title}
+
 ${textarea}
                     `
                     let filename = `${date.getFullYear()}-${(date.getMonth()<10) ? '0'+  date.getMonth() : date.getMonth()}-${(date.getDate()<10) ? '0'+  date.getDate() : date.getDate()}-${lintTitle(title)}`
