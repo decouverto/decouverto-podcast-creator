@@ -57,7 +57,7 @@ Plus d'info sur: [http://www.anim-dabo.fr/](http://www.anim-dabo.fr/)
                 document.getElementById("submit").addEventListener("click", function(event){
                     event.preventDefault();
                     let title = document.getElementById("title").value;
-                    let length = document.getElementById("length").value;
+                    let length = parseInt(document.getElementById("length").value)+53;
                     let keywords = document.getElementById("keywords").value;
                     let voices = document.getElementById("voices").value;
                     let description = document.getElementById("description").value;
@@ -69,7 +69,7 @@ title: "${title}"
 date: ${date.getFullYear()}-${(date.getMonth()<10) ? '0'+  date.getMonth() : date.getMonth()}-${(date.getDate()<10) ? '0'+  date.getDate() : date.getDate()} 10:00:00 +0100
 file: ""
 description: "${description}"
-duration: "${Math.floor(length/60)}:${length%60}" 
+duration: "${Math.floor(length/60)}:${(length%60<10) ? '0'+  length%60 : length%60}" 
 length: "${length}"
 explicit: "no" 
 keywords: "${keywords}"
