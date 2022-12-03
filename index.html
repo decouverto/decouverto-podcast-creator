@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Découverto Podcast: Formulaire</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css">
+        <style>body { margin: 20px}</style>
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="https://podcast.decouverto.fr/images/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://podcast.decouverto.fr/images/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="https://podcast.decouverto.fr/images/manifest.json">
+        <link rel="mask-icon" href="https://podcast.decouverto.fr/images/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="https://podcast.decouverto.fr/images/favicon.ico">
+    </head>
+   <body>
+        <h1>Découverto Podcast: Formulaire</h1>
+        <form autocomplete="off">
+            <label for="title">Titre:</label>
+            <input type="text" id="title" name="title" value="Mémoire De Territoire Marché de Noël de Dabo 2022 #1">
+            <label for="duration">Durée (mm:ss):</label>
+            <input type="text" id="duration" name="duration" value="6:15">
+            <label for="length">Durée <b>(en seconde)</b>:</label>
+            <input type="text" id="length" name="length" value="615">
+            <label for="keywords">Mots clés:</label>
+            <input type="text" id="keywords" name="keywords" value="Marché de Noël, Dabo, Noël">
+            <label for="voices">Personnes:</label>
+            <input type="text" id="voices" name="voices" value="Vincent Fetter, Denis Ruffenach">
+            <label for="description">Résumé (1 phrase):</label>
+            <input type="text" id="description" name="description" value="L'Association Pays de Dabo Animation nous parle du 20ème marché de Noël de Dabo.">
+            <label for="textarea">Texte:</label>
+            <textarea id="textarea" name="textarea" rows="4" cols="50">
+### Mémoire De Territoire Marché de Noël de Dabo 2022 #1
+
+Le Samedi 26 et Dimanche 27 l'Association Pays de Dabo Animation organise le 20ème marché de Noël Montagnard de Dabo en intérieur et extérieur avec de nombreuses possibilités de restaurations.
+Plus d'info sur: [http://www.anim-dabo.fr/](http://www.anim-dabo.fr/)
+            </textarea>
+            <br>
+            <input type="submit" value="Télécharger" id="submit">
+        </form>
+        <script>
+                function download(filename, text) {
+                    var pom = document.createElement('a');
+                    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                    pom.setAttribute('download', filename + '.md');
+
+                    if (document.createEvent) {
+                        var event = document.createEvent('MouseEvents');
+                        event.initEvent('click', true, true);
+                        pom.dispatchEvent(event);
+                    }
+                    else {
+                        pom.click();
+                    }
+                }
+                function lintTitle(str) {
+                    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Z0-9]+/ig, "-").toLowerCase();
+                }
+                document.getElementById("submit").addEventListener("click", function(event){
+                    event.preventDefault();
+                    let title = document.getElementById("title").value;
+                    let duration = document.getElementById("duration").value;
+                    let length = document.getElementById("length").value;
+                    let keywords = document.getElementById("keywords").value;
+                    let voices = document.getElementById("voices").value;
+                    let description = document.getElementById("description").value;
+                    let textarea = document.getElementById("textarea").value;
+                    let date = new Date()
+                    let text = `---
+layout: post
+title: "${title}"
+date: ${date.getFullYear()}-${(date.getMonth()<10) ? '0'+  date.getMonth() : date.getMonth()}-${(date.getDate()<10) ? '0'+  date.getDate() : date.getDate()} 10:00:00 +0100
+file: ""
+description: "${description}"
+duration: "${duration}" 
+length: "${length}"
+explicit: "no" 
+keywords: "${keywords}"
+block: "no" 
+voices: "${voices}"
+---
+${textarea}
+                    `
+                    let filename = `${date.getFullYear()}-${(date.getMonth()<10) ? '0'+  date.getMonth() : date.getMonth()}-${(date.getDate()<10) ? '0'+  date.getDate() : date.getDate()}-${lintTitle(title)}`
+                    download(filename, text);
+                });
+        </script>
+   </body>
+</html>
