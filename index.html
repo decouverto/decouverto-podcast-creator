@@ -18,9 +18,7 @@
         <form autocomplete="off">
             <label for="title">Titre:</label>
             <input type="text" id="title" name="title" value="Mémoire De Territoire Marché de Noël de Dabo 2022 #1">
-            <label for="duration">Durée (mm:ss):</label>
-            <input type="text" id="duration" name="duration" value="6:15">
-            <label for="length">Durée <b>(en seconde)</b>:</label>
+            <label for="length">Durée (<b>en seconde</b>, exemple: <i>10:15 devient 615</i>):</label>
             <input type="text" id="length" name="length" value="615">
             <label for="keywords">Mots clés:</label>
             <input type="text" id="keywords" name="keywords" value="Marché de Noël, Dabo, Noël">
@@ -29,7 +27,7 @@
             <label for="description">Résumé (1 phrase):</label>
             <input type="text" id="description" name="description" value="L'Association Pays de Dabo Animation nous parle du 20ème marché de Noël de Dabo.">
             <label for="textarea">Texte:</label>
-            <textarea id="textarea" name="textarea" rows="4" cols="50">
+            <textarea id="textarea" name="textarea" rows="6" cols="50">
 ### Mémoire De Territoire Marché de Noël de Dabo 2022 #1
 
 Le Samedi 26 et Dimanche 27 l'Association Pays de Dabo Animation organise le 20ème marché de Noël Montagnard de Dabo en intérieur et extérieur avec de nombreuses possibilités de restaurations.
@@ -59,7 +57,6 @@ Plus d'info sur: [http://www.anim-dabo.fr/](http://www.anim-dabo.fr/)
                 document.getElementById("submit").addEventListener("click", function(event){
                     event.preventDefault();
                     let title = document.getElementById("title").value;
-                    let duration = document.getElementById("duration").value;
                     let length = document.getElementById("length").value;
                     let keywords = document.getElementById("keywords").value;
                     let voices = document.getElementById("voices").value;
@@ -72,7 +69,7 @@ title: "${title}"
 date: ${date.getFullYear()}-${(date.getMonth()<10) ? '0'+  date.getMonth() : date.getMonth()}-${(date.getDate()<10) ? '0'+  date.getDate() : date.getDate()} 10:00:00 +0100
 file: ""
 description: "${description}"
-duration: "${duration}" 
+duration: "${Math.floor(length/60)}:${length%60}" 
 length: "${length}"
 explicit: "no" 
 keywords: "${keywords}"
