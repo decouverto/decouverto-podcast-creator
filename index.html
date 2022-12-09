@@ -18,13 +18,15 @@
         <form autocomplete="off">
             <label for="title">Titre:</label>
             <input type="text" id="title" name="title" value="Mémoire De Territoire Marché de Noël de Dabo 2022 #1">
-            <label for="length">Durée (<b>en seconde</b>, exemple: <i>10:15 devient 615</i>):</label>
-            <input type="text" id="length" name="length" value="615">
-            <label for="keywords">Mots clés:</label>
+            <label for="minutes">Minutes (exemple: <i><b>10</b>:15 entrer <b>10</b></i>):</label>
+            <input type="number" id="minutes" name="minutes" value="10">
+            <label for="seconds">Secondes (exemple: <i>10:<b>15</b> entrer <b>15</b></i>):</label>
+            <input type="number" id="seconds" name="seconds" value="15">
+            <label for="keywords">Mots clés (séparés par des virgules):</label>
             <input type="text" id="keywords" name="keywords" value="Marché de Noël, Dabo, Noël">
-            <label for="voices">Personnes:</label>
+            <label for="voices">Personnes (séparés par des virgules):</label>
             <input type="text" id="voices" name="voices" value="Vincent Fetter, Denis Ruffenach">
-            <label for="description">Résumé (1 phrase):</label>
+            <label for="description">Résumé (1 phrase compréhensible d'elle-même):</label>
             <input type="text" id="description" name="description" value="L'Association Pays de Dabo Animation nous parle du 20ème marché de Noël de Dabo.">
             <label for="textarea">Texte:</label>
             <textarea id="textarea" name="textarea" rows="6" cols="50">
@@ -55,7 +57,7 @@ Plus d'info sur: [http://www.anim-dabo.fr/](http://www.anim-dabo.fr/)
                 document.getElementById("submit").addEventListener("click", function(event){
                     event.preventDefault();
                     let title = document.getElementById("title").value;
-                    let length = parseInt(document.getElementById("length").value)+53;
+                    let length = parseInt(document.getElementById("minutes").value)*60+parseInt(document.getElementById("seconds").value)+53;
                     let keywords = document.getElementById("keywords").value;
                     let voices = document.getElementById("voices").value;
                     let description = document.getElementById("description").value;
