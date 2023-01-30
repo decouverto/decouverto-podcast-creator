@@ -66,7 +66,7 @@ Plus d'info sur: [http://www.anim-dabo.fr/](http://www.anim-dabo.fr/)
                     let text = `---
 layout: post
 title: "${title}"
-date: ${date.getFullYear()}-${(date.getMonth()+1<10) ? '0'+  date.getMonth()+1 : date.getMonth()+1}-${(date.getDate()<10) ? '0'+  date.getDate() : date.getDate()} 10:00:00 +0100
+date: ${date.getFullYear()}-${(date.getMonth()+1<10) ? '0' +  (date.getMonth()+1) : date.getMonth()+1}-${(date.getDate()<10) ? '0'+  date.getDate() : date.getDate()} 10:00:00 +0100
 file: ""
 description: "${description}"
 duration: "${Math.floor(length/60)}:${(length%60<10) ? '0'+  length%60 : length%60}" 
@@ -80,7 +80,7 @@ voices: "${voices}"
 
 ${textarea}
                     `
-                    let filename = `${date.getFullYear()}-${(date.getMonth()+1<10) ? '0'+  date.getMonth()+1 : date.getMonth()+1}-${(date.getDate()<10) ? '0'+  date.getDate() : date.getDate()}-${lintTitle(title)}`
+                    let filename = `${date.getFullYear()}-${(date.getMonth()+1<10) ? '0'+ (date.getMonth()+1) : date.getMonth()+1}-${(date.getDate()<10) ? '0'+  date.getDate() : date.getDate()}-${lintTitle(title)}`
                     download(filename, text);
                 });
         </script>
